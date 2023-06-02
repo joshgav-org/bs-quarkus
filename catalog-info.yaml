@@ -8,7 +8,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     github.com/project-slug: joshgav-org/bs-quarkus
 spec:
-  type: api
+  type: component
   system: system:default/examples
   lifecycle: production
-  owner: user:default/guest
+  owner: josh@joshgav.com
