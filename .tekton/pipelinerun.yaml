@@ -6,6 +6,8 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    pipelinesascode.tekton.dev/on-target-branch: "[refs/heads/main]"
+    pipelinesascode.tekton.dev/on-event: "[push]"
   labels:
     tekton.dev/pipeline: bs-quarkus-pipeline
     type: pipeline
