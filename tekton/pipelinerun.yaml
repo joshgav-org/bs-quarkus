@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: bs-quarkus-pipeline-run-init
+  namespace: quarkusapp
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  labels:
+    tekton.dev/pipeline: bs-quarkus-pipeline
+    type: pipeline
+spec:
+  params:
+    - name: source-repo
+      value: 'https://github.com/joshgav-org/bs-quarkus.git'
+    - name: source-branch
+      value: main
+    - name: output-image
+      value: quay.io/egistry-quay-quay.apps.ipi.aws.joshgav.com/joshgav/quarkusapp/bs-quarkus
+  pipelineRef:
+    name: bs-quarkus-pipeline
+  serviceAccountName: pipeline
+  workspaces:
+    - name: source-folder
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi

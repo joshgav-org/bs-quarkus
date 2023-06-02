@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bs-quarkus
+  annotations:
+    tektonci/build-namespace: quarkusapp
+    backstage.io/kubernetes-id: bs-quarkus
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: joshgav-org/bs-quarkus
+spec:
+  type: api
+  system: system:default/examples
+  lifecycle: production
+  owner: user:default/guest
